@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mon suivi Vols Lima</title>
+<style>
+  :root{--bg:#0a0f1c;--panel:#111a2e;--line:#22304d;--txt:#e6edf8;--muted:#8ea0c0;--accent:#4f8cff}
+  body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--txt);padding:16px;max-width:700px;margin:0 auto}
+  h1{font-size:1.2rem;margin:0 0 4px}
+  h2{font-size:.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:22px 0 8px}
+  .best{background:linear-gradient(135deg,#0f2f22,#0d1c30);border:1px solid #1f5a3d;border-radius:14px;padding:18px;margin:16px 0}
+  .best .price{font-size:2.4rem;font-weight:700;margin:6px 0}
+  .row{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:11px 14px;margin:8px 0;display:flex;justify-content:space-between;align-items:center}
+  .row .p{font-weight:700;font-size:1.05rem;white-space:nowrap}
+  .muted{color:var(--muted);font-size:.82rem}
+  .badge{background:#1b2743;padding:2px 8px;border-radius:10px;font-size:.75rem;margin-left:6px}
+</style>
+</head>
+<body>
+<h1>✈️ Paris (CDG) → Lima (LIM)</h1>
+<p class="muted" id="updated">Chargement des données...</p>
+
+<div id="top-box"></div>
+
+<h2>Toutes les meilleures options</h2>
+<div id="list"></div>
+
+<div class="muted" style="margin-top:30px;text-align:center">
+  <a href="https://ulysse.com" style="color:var(--accent)">Aller sur Ulysse pour réserver</a>
+</div>
+
+<script>
+fetch('prices.json').then(r=>r.json()).then(data=>{
+  document.getElementById('updated').textContent = `Dernière mise à jour : ${data.last_update}`;
+  
+  if(!data.top_offers || data.top_offers.length === 0) {
+    document.getElementById('top-box').innerHTML = '<p>Aucun vol trouvé.</p>';
+    return;
+  }
+
+  // Afficher la meilleure offre en gros
+  const best = data.top_offers[0];
+  document.getElementById('top-box').innerHTML = `
+    <div class="best">
+      <div class="muted">Meilleur prix trouvé</div>
+      <div class="price">${best.price} €</div>
+      <div>${best.airline_name} <span class="badge">${best.stops} escale(s)</span></div>
+      <div class="muted" style="margin-top:6px">Du ${formatDate(best.dep)} au ${formatDate(best.ret)}</div>
+    </div>`;
+
+  // Afficher la liste
+  const html = data.all_offers.map(o => `
+    <div class="row">
+      <div>
+        <div style="font-weight:600">${o.airline_name}</div>
+        <div class="muted">${formatDate(o.dep)} → ${formatDate(o.ret)} · ${o.stops} escale(s)</div>
+      </div>
+      <div class="p">${o.price} €</div>
+    </div>
+  `).join('');
+  document.getElementById('list').innerHTML = html;
+  
+}).catch(err => {
+  document.getElementById('updated').textContent = "Erreur : le fichier prices.json n'existe pas encore. Lancez le robot sur GitHub !";
+});
+
+function formatDate(iso) {
+  const d = new Date(iso + 'T00:00:00Z');
+  return d.toLocaleDateString('fr-FR', {day:'2-digit', month:'short', timeZone:'UTC'});
+}
+</script>
+</body>
+</html>
