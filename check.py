@@ -12,7 +12,6 @@ COMBOS = [
 
 def fetch_flights(dep, ret):
     print(f"🔎 Recherche pour {dep} -> {ret}...")
-    # 1. Lancer la recherche
     url = f"https://agents.ulysse.com/api/search?origin=CDG&destination=LIM&departure_date={dep}&return_date={ret}"
     try:
         with urllib.request.urlopen(url, timeout=15) as r:
@@ -20,7 +19,6 @@ def fetch_flights(dep, ret):
             req_id = data.get("id")
             if not req_id: return []
             
-        # 2. Attendre que la recherche soit terminée (on essaie 10 fois)
         for _ in range(10):
             time.sleep(3)
             res_url = f"https://agents.ulysse.com/api/offer_requests/{req_id}"
@@ -38,50 +36,43 @@ def analyze_combo(dep, ret):
     if not offers:
         return None
         
-    af_direct_prices = []
+    af_prices = []  
     other_prices = []
     
     for o in offers:
-        # Récupérer le prix total (converti en float)
         price = float(o.get("total", {}).get("amount", 0))
-        
-        # Récupérer la compagnie
         carrier = o.get("owner", {}).get("iata_code", "")
         
-        # Vérifier si c'est un vol direct (1 seul segment à l'aller ET au retour)
+        # On vérifie le nombre d'escales
         slices = o.get("slices", [])
-        is_direct = True
-        if len(slices) > 0:
-            for s in slices:
-                if len(s.get("segments", [])) > 1:
-                    is_direct = False
-                    break
-        
-        # Trier : Air France direct vs le reste
-        if carrier == "AF" and is_direct:
-            af_direct_prices.append(price)
+        max_segments = 0
+        for s in slices:
+            max_segments = max(max_segments, len(s.get("segments", [])))
+            
+        # CORRECTION ICI : On accepte Air France direct (0 escale) OU 1 escale max (2 segments)
+        if carrier == "AF" and max_segments <= 2:
+            af_prices.append(price)
         else:
             other_prices.append((price, carrier))
 
-    # Trouver les meilleurs prix
-    best_af = min(af_direct_prices) if af_direct_prices else None
+    best_af = min(af_prices) if af_prices else None
     best_other = min(other_prices, key=lambda x: x[0]) if other_prices else (None, None)
 
-    # Appliquer votre règle des -30%
+    # Application de la règle des 30%
     if best_af and best_other[0]:
         seuil_30 = round(best_af * 0.70)
         if best_other[0] <= seuil_30:
             retained_price = best_other[0]
-            choice = f"✈️ AUTRE ({best_other[1]}) - {round((1 - best_other[0]/best_af)*100)}% moins cher"
+            choice = f"✈️ AUTRE ({best_other[1]}) - {round((1 - best_other[0]/best_af)*100)}% moins cher (AF à {best_af} €)"
         else:
             retained_price = best_af
-            choice = "🇫🇷 AIR FRANCE (Direct)"
+            choice = f"🇫🇷 AIR FRANCE - (Autre moins cher : {best_other[0]} €)"
     elif best_af:
         retained_price = best_af
-        choice = "🇫🇷 AIR FRANCE (Direct)"
+        choice = "🇫🇷 AIR FRANCE - Pas de concurrence"
     elif best_other[0]:
         retained_price = best_other[0]
-        choice = f"✈️ AUTRE ({best_other[1]}) - Pas d'AF direct"
+        choice = f"✈️ AUTRE ({best_other[1]}) - Pas d'AF trouvé"
     else:
         return None
 
@@ -89,8 +80,8 @@ def analyze_combo(dep, ret):
         "dep": dep, "ret": ret,
         "price": retained_price,
         "choice": choice,
-        "af_direct": best_af,
-        "best_other": best_other[0]
+        "af": best_af,
+        "other": best_other[0]
     }
 
 print("🤖 Démarrage de l'analyse...")
@@ -100,7 +91,6 @@ for dep, ret in COMBOS:
     if res:
         results.append(res)
 
-# Trier par prix croissant
 results.sort(key=lambda x: x["price"])
 
 print("\n--- RÉSULTATS ---")
