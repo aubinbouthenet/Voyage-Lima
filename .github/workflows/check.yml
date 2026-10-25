@@ -1,8 +1,12 @@
 name: Suivi Vols Lima
+
 on:
   schedule:
-    - cron: '0 7 * * *' # Tous les jours à 7h00 UTC (9h à Paris)
-  workflow_dispatch: # Permet de lancer le test à la main
+    - cron: '0 7 * * *' # Tous les jours à 7h00 UTC
+  workflow_dispatch: # Permet de le lancer à la main
+
+permissions:
+  contents: write # Autorise le robot à sauvegarder le fichier
 
 jobs:
   check:
@@ -18,3 +22,11 @@ jobs:
           
       - name: Lancer le script de recherche
         run: python check.py
+        
+      - name: Sauvegarder le fichier prices.json
+        run: |
+          git config user.name "Robot Lima"
+          git config user.email "robot@lima.com"
+          git add prices.json
+          git commit -m "Mise à jour des prix $(date +%F)" || echo "Aucun changement"
+          git push
