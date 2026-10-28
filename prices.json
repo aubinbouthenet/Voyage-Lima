@@ -1,26 +1,26 @@
 {
-  "last_update": "2026-10-27",
+  "last_update": "2026-10-28",
   "top_offers": [
     {
-      "dep": "2027-08-15",
-      "ret": "2027-09-03",
-      "price": 715.25,
+      "dep": "2027-08-09",
+      "ret": "2027-08-27",
+      "price": 714.86,
       "airline_code": "AA",
       "airline_name": "American Airlines",
       "stops": 0
     },
     {
-      "dep": "2027-08-09",
-      "ret": "2027-08-27",
-      "price": 720.37,
+      "dep": "2027-08-03",
+      "ret": "2027-08-20",
+      "price": 721.79,
       "airline_code": "IB",
       "airline_name": "Iberia",
       "stops": 0
     },
     {
-      "dep": "2027-08-09",
-      "ret": "2027-08-27",
-      "price": 723.74,
+      "dep": "2027-08-15",
+      "ret": "2027-09-03",
+      "price": 722.43,
       "airline_code": "AA",
       "airline_name": "American Airlines",
       "stops": 0
@@ -28,81 +28,33 @@
   ],
   "all_offers": [
     {
+      "dep": "2027-08-09",
+      "ret": "2027-08-27",
+      "price": 714.86,
+      "airline_code": "AA",
+      "airline_name": "American Airlines",
+      "stops": 0
+    },
+    {
+      "dep": "2027-08-03",
+      "ret": "2027-08-20",
+      "price": 721.79,
+      "airline_code": "IB",
+      "airline_name": "Iberia",
+      "stops": 0
+    },
+    {
       "dep": "2027-08-15",
       "ret": "2027-09-03",
-      "price": 715.25,
+      "price": 722.43,
       "airline_code": "AA",
       "airline_name": "American Airlines",
       "stops": 0
     },
     {
-      "dep": "2027-08-09",
-      "ret": "2027-08-27",
-      "price": 720.37,
-      "airline_code": "IB",
-      "airline_name": "Iberia",
-      "stops": 0
-    },
-    {
-      "dep": "2027-08-09",
-      "ret": "2027-08-27",
-      "price": 723.74,
-      "airline_code": "AA",
-      "airline_name": "American Airlines",
-      "stops": 0
-    },
-    {
-      "dep": "2027-08-09",
-      "ret": "2027-08-27",
-      "price": 728.06,
-      "airline_code": "BA",
-      "airline_name": "British Airways",
-      "stops": 0
-    },
-    {
-      "dep": "2027-08-06",
-      "ret": "2027-08-22",
-      "price": 735.82,
-      "airline_code": "AA",
-      "airline_name": "American Airlines",
-      "stops": 0
-    },
-    {
-      "dep": "2027-08-12",
-      "ret": "2027-08-27",
-      "price": 737.11,
-      "airline_code": "AA",
-      "airline_name": "American Airlines",
-      "stops": 0
-    },
-    {
-      "dep": "2027-08-18",
-      "ret": "2027-09-04",
-      "price": 738.97,
-      "airline_code": "AA",
-      "airline_name": "American Airlines",
-      "stops": 0
-    },
-    {
-      "dep": "2027-08-12",
-      "ret": "2027-08-27",
-      "price": 741.15,
-      "airline_code": "IB",
-      "airline_name": "Iberia",
-      "stops": 0
-    },
-    {
-      "dep": "2027-08-18",
-      "ret": "2027-09-04",
-      "price": 742.7,
-      "airline_code": "IB",
-      "airline_name": "Iberia",
-      "stops": 0
-    },
-    {
-      "dep": "2027-08-12",
-      "ret": "2027-08-27",
-      "price": 744.17,
+      "dep": "2027-08-03",
+      "ret": "2027-08-20",
+      "price": 724.04,
       "airline_code": "BA",
       "airline_name": "British Airways",
       "stops": 0
@@ -110,55 +62,7 @@
     {
       "dep": "2027-08-03",
       "ret": "2027-08-20",
-      "price": 745.51,
-      "airline_code": "BA",
-      "airline_name": "British Airways",
-      "stops": 0
-    },
-    {
-      "dep": "2027-08-18",
-      "ret": "2027-09-04",
-      "price": 747.69,
-      "airline_code": "BA",
-      "airline_name": "British Airways",
-      "stops": 0
-    },
-    {
-      "dep": "2027-08-15",
-      "ret": "2027-09-03",
-      "price": 749.09,
-      "airline_code": "BA",
-      "airline_name": "British Airways",
-      "stops": 0
-    },
-    {
-      "dep": "2027-08-15",
-      "ret": "2027-09-03",
-      "price": 749.52,
-      "airline_code": "IB",
-      "airline_name": "Iberia",
-      "stops": 0
-    },
-    {
-      "dep": "2027-08-06",
-      "ret": "2027-08-22",
-      "price": 765.13,
-      "airline_code": "BA",
-      "airline_name": "British Airways",
-      "stops": 0
-    },
-    {
-      "dep": "2027-08-03",
-      "ret": "2027-08-20",
-      "price": 768.21,
-      "airline_code": "IB",
-      "airline_name": "Iberia",
-      "stops": 0
-    },
-    {
-      "dep": "2027-08-03",
-      "ret": "2027-08-20",
-      "price": 773.71,
+      "price": 724.05,
       "airline_code": "AA",
       "airline_name": "American Airlines",
       "stops": 0
@@ -166,15 +70,111 @@
     {
       "dep": "2027-08-06",
       "ret": "2027-08-22",
-      "price": 782.47,
+      "price": 726.72,
       "airline_code": "IB",
       "airline_name": "Iberia",
       "stops": 0
     },
     {
+      "dep": "2027-08-18",
+      "ret": "2027-09-04",
+      "price": 734.2,
+      "airline_code": "IB",
+      "airline_name": "Iberia",
+      "stops": 0
+    },
+    {
+      "dep": "2027-08-15",
+      "ret": "2027-09-03",
+      "price": 736.76,
+      "airline_code": "BA",
+      "airline_name": "British Airways",
+      "stops": 0
+    },
+    {
+      "dep": "2027-08-12",
+      "ret": "2027-08-27",
+      "price": 737.77,
+      "airline_code": "BA",
+      "airline_name": "British Airways",
+      "stops": 0
+    },
+    {
+      "dep": "2027-08-15",
+      "ret": "2027-09-03",
+      "price": 750.9,
+      "airline_code": "IB",
+      "airline_name": "Iberia",
+      "stops": 0
+    },
+    {
+      "dep": "2027-08-06",
+      "ret": "2027-08-22",
+      "price": 751.13,
+      "airline_code": "BA",
+      "airline_name": "British Airways",
+      "stops": 0
+    },
+    {
+      "dep": "2027-08-12",
+      "ret": "2027-08-27",
+      "price": 752.79,
+      "airline_code": "AA",
+      "airline_name": "American Airlines",
+      "stops": 0
+    },
+    {
+      "dep": "2027-08-09",
+      "ret": "2027-08-27",
+      "price": 754.41,
+      "airline_code": "BA",
+      "airline_name": "British Airways",
+      "stops": 0
+    },
+    {
+      "dep": "2027-08-06",
+      "ret": "2027-08-22",
+      "price": 757.08,
+      "airline_code": "AA",
+      "airline_name": "American Airlines",
+      "stops": 0
+    },
+    {
+      "dep": "2027-08-12",
+      "ret": "2027-08-27",
+      "price": 763.56,
+      "airline_code": "IB",
+      "airline_name": "Iberia",
+      "stops": 0
+    },
+    {
+      "dep": "2027-08-09",
+      "ret": "2027-08-27",
+      "price": 768.82,
+      "airline_code": "IB",
+      "airline_name": "Iberia",
+      "stops": 0
+    },
+    {
+      "dep": "2027-08-18",
+      "ret": "2027-09-04",
+      "price": 775.09,
+      "airline_code": "BA",
+      "airline_name": "British Airways",
+      "stops": 0
+    },
+    {
+      "dep": "2027-08-18",
+      "ret": "2027-09-04",
+      "price": 777.14,
+      "airline_code": "AA",
+      "airline_name": "American Airlines",
+      "stops": 0
+    },
+    {
       "dep": "2027-08-03",
       "ret": "2027-08-20",
-      "price": 1098.44,
+      "price": 1103.37,
       "airline_code": "TS",
       "airline_name": "Air Transat",
       "stops": 2
@@ -182,7 +182,7 @@
     {
       "dep": "2027-08-12",
       "ret": "2027-08-27",
-      "price": 1098.44,
+      "price": 1103.37,
       "airline_code": "TS",
       "airline_name": "Air Transat",
       "stops": 2
